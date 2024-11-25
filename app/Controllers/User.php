@@ -18,6 +18,7 @@ class User extends BaseController
     {
         $data = [
             'title' => 'Data Admin',
+            'roleName' => $roleName,
             'users' => $this->userModel->getUserByRole($roleName),
         ];
         return view('users/index', $data);

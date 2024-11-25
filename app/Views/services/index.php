@@ -5,6 +5,15 @@
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
+<style>
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+        
+    }
+</style>
 <?= $this->endSection() ?>
 
 <!-- Content -->
@@ -41,7 +50,7 @@
 
                         <table id="example1" class="table table-bordered table-striped">
 
-                            <a href="<?= base_url('service/create') ?>"  class="btn btn-primary">
+                            <a href="<?= base_url('service/create') ?>" class="btn btn-primary">
                                 Tambah Service
                             </a>
                             <thead>
@@ -58,14 +67,14 @@
                             <tbody>
                                 <?php
 
-                                        use App\Controllers\Category;
+                                use App\Controllers\Category;
 
- $i = 1; ?>
+                                $i = 1; ?>
                                 <?php foreach ($services as $service) : ?>
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $service['name'] ?></td>
-                                        <td><?= $service['description'] ?></td>
+                                        <td class="truncate"><?= $service['description'] ?></td>
                                         <td><?= $service['price'] ?></td>
                                         <td><?= $service['category_name'] ?></td>
                                         <td>
@@ -74,7 +83,7 @@
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
                                             </form>
-                                            <a href="<?= base_url('service/edit/'. $service['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
+                                            <a href="<?= base_url('service/edit/' . $service['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

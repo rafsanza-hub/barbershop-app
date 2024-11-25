@@ -8,62 +8,31 @@
 
      <!-- Sidebar -->
      <div class="sidebar">
-         <!-- Sidebar user panel (optional) -->
-         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-             <div class="image">
-                 <img src="<?= base_url() ?>adminlte/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-             </div>
-             <div class="info">
-                 <a href="#" class="d-block">Alexander Pierce</a>
-             </div>
-         </div>
 
-       
+
+
 
          <!-- Sidebar Menu -->
-         <nav class="mt-2">
+         <nav class="mt-5">
              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                  <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                 <li class="nav-header">Dashboard</li>
                  <li class="nav-item">
                      <a href="<?= base_url() ?>" class="nav-link">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
                          <p>
                              Dashboard
-                            
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-header">USER LIST</li>
-                 <li class="nav-item">
-                     <a href="<?= base_url('user/admin') ?>" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
-                         <p>
-                             Admin
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="<?= base_url('user/barber') ?>" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
-                         <p>
-                             Barber
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="<?= base_url('user/client') ?>" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
-                         <p>
-                             Client
+
                          </p>
                      </a>
                  </li>
 
-                 <li class="nav-header">SERVICES</li>
+
+                 <li class="nav-header">Services</li>
                  <li class="nav-item">
                      <a href="<?= base_url('category') ?>" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
+                         <i class="nav-icon fas fa-list"></i>
                          <p>
                              Kategory
                          </p>
@@ -71,12 +40,51 @@
                  </li>
                  <li class="nav-item">
                      <a href="<?= base_url('service') ?>" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
+                         <i class="nav-icon fas fa-cut"></i>
                          <p>
                              Services
                          </p>
                      </a>
                  </li>
+
+                 <li class="nav-header">User List</li>
+                 <li class="nav-item">
+                     <a href="<?= base_url('user/admin') ?>" class="nav-link">
+                         <i class="nav-icon fas fa-user-tie"></i>
+                         <p>
+                             Admin
+                         </p>
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="<?= base_url('user/barber') ?>" class="nav-link">
+                         <i class="nav-icon fas fa-user-tag"></i>
+                         <p>
+                             Barber
+                         </p>
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="<?= base_url('user/client') ?>" class="nav-link">
+                         <i class="nav-icon fas fa-user"></i>
+                         <p>
+                             Client
+                         </p>
+                     </a>
+                 </li>
+
+                 <li class="nav-header">Logout</li>
+                 <li class="nav-item">
+                     <a href="<?= base_url('logout') ?>" class="nav-link">
+                         <i class="nav-icon fas fa-sign-out-alt"></i>
+                         <p>
+                             Logout
+                         </p>
+                     </a>
+                 </li>
+
+
+
 
              </ul>
          </nav>

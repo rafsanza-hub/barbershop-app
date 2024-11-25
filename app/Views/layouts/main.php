@@ -17,7 +17,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="<?= base_url() ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="<?= base_url() ?>plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="<u?= base_url() ?>plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url() ?>adminlte/css/adminlte.min.css">
     <!-- overlayScrollbars -->

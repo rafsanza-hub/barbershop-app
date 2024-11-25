@@ -17,5 +17,10 @@ $routes->post('service/update/(:num)', 'Service::update/$1');
 $routes->post('service/save', 'Service::save');
 $routes->get('service/edit/(:num)', 'Service::edit/$1');
 $routes->delete('service/delete/(:num)', 'Service::delete/$1');
-$routes->get('user/(:any)', 'User::index/$1');
+$routes->get('admin/create', 'User::create/admin');
+$routes->get('barber/create', 'User::create/barber');
+$routes->get('client/create', 'User::create/client');
+$routes->get('user/admin', 'User::index/admin');
+$routes->get('user/barber', 'User::index/barber');
+$routes->get('user/client', 'User::index/client');
 

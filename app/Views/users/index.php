@@ -33,15 +33,15 @@
                 <!-- user Table -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">user</h3>
+                        <h3 class="card-title"><?= ucfirst($roleName) ?> List</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
 
                         <table id="example1" class="table table-bordered table-striped">
 
-                            <a href="<?= base_url('user/create') ?>"  class="btn btn-primary">
-                                Tambah user
+                            <a href="<?= base_url($roleName .'/create') ?>" class="btn btn-primary">
+                                Tambah <?= ucfirst($roleName) ?>
                             </a>
                             <thead>
                                 <tr>
@@ -56,22 +56,22 @@
                             <tbody>
                                 <?php
 
-                                        use App\Controllers\Category;
+                                use App\Controllers\Category;
 
- $i = 1; ?>
+                                $i = 1; ?>
                                 <?php foreach ($users as $user) : ?>
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $user['username'] ?></td>
                                         <td><?= $user['email'] ?></td>
-                                        <td><?= $user['active'] ?></td>
+                                        <td><?= $user['active'] == 1 ? 'Active' : 'Non Active' ?></td>
                                         <td>
                                             <form action="<?= base_url('user/delete/' . $user['id']) ?>" method="post" class="d-inline">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
                                             </form>
-                                            <a href="<?= base_url('user/edit/'. $user['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
+                                            <a href="<?= base_url('user/edit/' . $user['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

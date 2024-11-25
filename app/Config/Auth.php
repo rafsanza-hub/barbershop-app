@@ -160,7 +160,7 @@ class Auth extends \Myth\Auth\Config\Auth
      *
      * @var int
      */
-    public $maxSimilarity = 50;
+    public $maxSimilarity = 0;
 
     /**
      * --------------------------------------------------------------------
@@ -185,7 +185,8 @@ class Auth extends \Myth\Auth\Config\Auth
      *
      * @var string|null Name of the ActivatorInterface class
      */
-    public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+    // public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+    public $requireActivation = null;
 
     /**
      * --------------------------------------------------------------------
@@ -197,7 +198,8 @@ class Auth extends \Myth\Auth\Config\Auth
      *
      * @var string|null Name of the ResetterInterface class
      */
-    public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+    // public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+    public $activeResetter = null;
 
     /**
      * --------------------------------------------------------------------
