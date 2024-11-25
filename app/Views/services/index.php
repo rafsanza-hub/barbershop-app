@@ -25,6 +25,7 @@
     </div><!-- /.container-fluid -->
 </section>
 
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -40,9 +41,9 @@
 
                         <table id="example1" class="table table-bordered table-striped">
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                                Tambah Kategori
-                            </button>
+                            <a href="<?= base_url('service/create') ?>"  class="btn btn-primary">
+                                Tambah Service
+                            </a>
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -55,7 +56,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
+                                <?php
+
+                                        use App\Controllers\Category;
+
+ $i = 1; ?>
                                 <?php foreach ($services as $service) : ?>
                                     <tr>
                                         <td><?= $i++ ?></td>
@@ -69,7 +74,7 @@
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
                                             </form>
-                                            <a class="btn btn-secondary btn-sm btn-edit">Edit</a>
+                                            <a href="<?= base_url('service/edit/'. $service['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

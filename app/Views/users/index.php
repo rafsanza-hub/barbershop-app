@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
 <?= $this->endSection() ?>
 
+<!-- Content -->
 <?= $this->section('content') ?>
 <section class="content-header">
     <div class="container-fluid">
@@ -29,44 +30,48 @@
         <div class="row">
             <div class="col-12">
 
-                <!-- Category Table -->
+                <!-- user Table -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Category</h3>
+                        <h3 class="card-title">user</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
 
                         <table id="example1" class="table table-bordered table-striped">
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                                Tambah Kategori
-                            </button>
+                            <a href="<?= base_url('user/create') ?>"  class="btn btn-primary">
+                                Tambah user
+                            </a>
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Category</th>
-                                    <th>Aksi(s)</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($categories as $category) : ?>
+                                <?php
+
+                                        use App\Controllers\Category;
+
+ $i = 1; ?>
+                                <?php foreach ($users as $user) : ?>
                                     <tr>
                                         <td><?= $i++ ?></td>
-                                        <td><?= $category['name'] ?></td>
+                                        <td><?= $user['username'] ?></td>
+                                        <td><?= $user['email'] ?></td>
+                                        <td><?= $user['active'] ?></td>
                                         <td>
-                                            <form action="<?= base_url('category/delete/' . $category['id']) ?>" method="post" class="d-inline">
+                                            <form action="<?= base_url('user/delete/' . $user['id']) ?>" method="post" class="d-inline">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
                                             </form>
-                                            <button type="button" class="btn btn-secondary btn-sm btn-edit"
-                                                data-toggle="modal"
-                                                data-id="<?= $category['id'] ?>"
-                                                data-name="<?= $category['name'] ?>">
-                                                Edit
-                                            </button>
+                                            <a href="<?= base_url('user/edit/'. $user['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -76,66 +81,12 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <!-- / .Category Table -->
+                <!-- / .user Table -->
 
             </div>
         </div>
     </div>
 </section>
-
-
-<!--****  TAMBAH MODAL ***-->
-<div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Default Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= base_url('category/save') ?>" method="post">
-                    <label for="name">Nama</label>
-                    <input type="text" name="name" id="name" class="form-control">
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-
-<!--**** EDIT MODAL ***-->
-<div class="modal fade" id="modal-edit">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Default Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= base_url('category/save') ?>" method="post" id="editCategoryForm">
-                    <label for="name">Nama</label>
-                    <input type="text" name="name" id="categoryName" class="form-control">
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-
 
 <?= $this->endSection() ?>
 
@@ -159,6 +110,7 @@
             "autoWidth": false,
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
+
     <?php if (session('success')) : ?>
         toastr.success('<?= session('success') ?>', 'Sukses', {
             closeButton: true,
@@ -167,20 +119,5 @@
             timeOut: 3000
         });
     <?php endif; ?>
-
-
-    $(document).on('click', '.btn-edit', function() {
-        let categoryId = $(this).data('id');
-        let categoryName = $(this).data('name');
-
-
-        // Isi data di modal
-        $('#categoryName').val(categoryName);
-        $('#editCategoryForm').attr('action', '/category/update/' + categoryId);
-
-        // Tampilkan modal
-        $('#modal-edit').modal('show');
-    });
 </script>
-
 <?= $this->endSection() ?>
