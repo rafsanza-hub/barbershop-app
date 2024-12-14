@@ -27,3 +27,6 @@ $routes->get('user/client', 'User::index/client');
 $routes->get('auth/google/login', 'GoogleAuthController::login');
 $routes->get('auth/google/register', 'GoogleAuthController::login');
 $routes->get('auth/google/callback', 'GoogleAuthController::callback');
+$routes->get('booking', 'Booking::index');
+$routes->get('customer/booking', 'Customer::booking');
+

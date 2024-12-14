@@ -9,13 +9,14 @@ use App\Models\UserModel;
 class GoogleAuthController extends BaseController
 {
     protected $client;
-    protected $clientId = getenv('GOOGLE_CLIENT_ID');
-    protected $clientSecret = getenv('GOOGLE_CLIENT_SECRET');
-
-    
+    protected $clientId;
+    protected $clientSecret;
 
     public function __construct()
     {
+        
+        $this->clientId = getenv('GOOGLE_CLIENT_ID');
+        $this->clientSecret = getenv('GOOGLE_CLIENT_SECRET');
         $this->client = new Client();
         
         $this->client->setClientId($this->clientId);
