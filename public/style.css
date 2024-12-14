@@ -83,7 +83,8 @@ nav {
   
 }
 nav img {
-  width: 170px;
+  margin: 10px 0;
+  width: 80px;
   filter: invert(100%) brightness(2);
 }
 .nav-link {

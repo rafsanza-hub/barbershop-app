@@ -24,4 +24,6 @@ $routes->get('client/create', 'User::create/client');
 $routes->get('user/admin', 'User::index/admin');
 $routes->get('user/barber', 'User::index/barber');
 $routes->get('user/client', 'User::index/client');
-
+$routes->get('auth/google/login', 'GoogleAuthController::login');
+$routes->get('auth/google/register', 'GoogleAuthController::login');
+$routes->get('auth/google/callback', 'GoogleAuthController::callback');

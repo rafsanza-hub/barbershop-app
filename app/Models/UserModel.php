@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
     protected $table            = 'users';
-    protected $allowedFields    = ['username', 'email', 'password_hash'];
+    protected $allowedFields    = ['username', 'email', 'password_hash', 'google_id'];
 
 
     public function getUserByRole($roleName){
