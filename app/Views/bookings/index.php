@@ -1,9 +1,10 @@
 <?= $this->extend('layouts/main.php') ?>
 
 <?= $this->section('style') ?>
-<link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/modules/datatables/datatables.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
+
 <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
 <style>
     .truncate {
@@ -18,105 +19,88 @@
 
 <!-- Content -->
 <?= $this->section('content') ?>
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>DataTables</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">DataTables</li>
-                </ol>
-            </div>
+<section class="section">
+    <div class="section-header">
+        <h1>Booking Table</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="#">Components</a></div>
+            <div class="breadcrumb-item">Booking</div>
         </div>
-    </div><!-- /.container-fluid -->
-</section>
+    </div>
 
-
-<section class="content">
-    <div class="container-fluid">
+    <div class="section-body">
+        <h2 class="section-title">Manage Your Bookings</h2>
+        <p class="section-lead">Here you can view and manage your booking data.</p>
         <div class="row">
             <div class="col-12">
+                <!-- Message Block -->
+                <?= $this->include('auth/_message_block.php') ?>
 
-                <!-- booking Table -->
+                <!-- Card Component -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">booking</h3>
+                        <h4>Booking Data</h4>
+                        <div class="card-header-form">
+                            <a href="<?= base_url('booking/create') ?>" class="btn btn-primary">Tambah booking</a>
+                        </div>
                     </div>
-                    <!-- /.card-header -->
                     <div class="card-body">
-
-                        <table id="example1" class="table table-bordered table-striped">
-
-                            <a href="<?= base_url('booking/create') ?>" class="btn btn-primary">
-                                Tambah booking
-                            </a>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Book Id</th>
-                                    <th>Customer</th>
-                                    <th>Barber</th>
-                                    <th>Service</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Aksi</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-
-                                use App\Controllers\Category;
-
-                                $i = 1; ?>
-                                <?php foreach ($bookings as $booking) : ?>
+                        <div class="table-responsive">
+                            <!-- Booking Table -->
+                            <table class="table table-striped" id="table-1">
+                                <thead>
                                     <tr>
-                                        <td><?= $i++ ?></td>
-                                        <td><?= $booking['id'] ?></td>
-                                        <td ><?= $booking['customer_name'] ?></td>
-                                        <td><?= $booking['barber_name'] ?></td>
-                                        <td><?= $booking['service_name'] ?></td>
-                                        <td><?= $booking['date'] ?></td>
-                                        <td><?= $booking['time'] ?></td>
-                                        <td>
-                                            <form action="<?= base_url('booking/delete/' . $booking['id']) ?>" method="post" class="d-inline">
-                                                <?= csrf_field() ?>
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger btn-sm">delete</button>
-                                            </form>
-                                            <a href="<?= base_url('booking/edit/' . $booking['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
-                                        </td>
+                                        <th>No</th>
+                                        <th>Book Id</th>
+                                        <th>Customer</th>
+                                        <th>Barber</th>
+                                        <th>Service</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Action</th>
                                     </tr>
-                                <?php endforeach; ?>
-
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($bookings as $booking) : ?>
+                                        <tr>
+                                            <td><?= $i++ ?></td>
+                                            <td><?= $booking['id'] ?></td>
+                                            <td><?= $booking['customer_name'] ?></td>
+                                            <td><?= $booking['barber_name'] ?></td>
+                                            <td><?= $booking['service_name'] ?></td>
+                                            <td><?= $booking['date'] ?></td>
+                                            <td><?= $booking['time'] ?></td>
+                                            <td>
+                                                <form action="<?= base_url('booking/delete/' . $booking['id']) ?>" method="post" class="d-inline">
+                                                    <?= csrf_field() ?>
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                </form>
+                                                <a href="<?= base_url('booking/edit/' . $booking['id']) ?>" class="btn btn-secondary btn-sm btn-edit">Edit</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- / .booking Table -->
-
+                <!-- End of Card -->
             </div>
         </div>
     </div>
 </section>
 
+
 <?= $this->endSection() ?>
 
 
 <?= $this->section('script') ?>
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="<?= base_url() ?>assets/modules/datatables/datatables.min.js"></script>
+<script src="<?= base_url() ?>assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
 <script src="../../plugins/toastr/toastr.min.js"></script>
 <script>
     $(function() {

@@ -4,102 +4,90 @@
 <?= $this->section('content') ?>
 
 <!-- general form elements disabled -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Register User</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Register</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
-</section>
-
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Form Registrasi User</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <?= view('App\Views\Auth\_message_block') ?>
-
-                        <form action="<?= url_to('register') ?>" method="post">
-                            <?= csrf_field() ?>
-                            <input type="hidden" name="role-name" value="<?= $roleName ?>">
-                            <h1><?= $roleName ?></h1>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- Username input -->
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" name="username" class="form-control <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" placeholder="Enter username" value="<?= old('username') ?>">
-                                        <?php if (session('errors.username')) : ?>
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.username') ?>
-                                            </div>
-                                        <?php endif ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <!-- Email input -->
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" name="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" placeholder="Enter email" value="<?= old('email') ?>">
-                                        <?php if (session('errors.email')) : ?>
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.email') ?>
-                                            </div>
-                                        <?php endif ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- Password input -->
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" class="form-control <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="Enter password">
-                                        <?php if (session('errors.password')) : ?>
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.password') ?>
-                                            </div>
-                                        <?php endif ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <!-- Repeat Password input -->
-                                    <div class="form-group">
-                                        <label>Repeat Password</label>
-                                        <input type="password" name="pass_confirm" class="form-control <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="Enter password again">
-                                        <?php if (session('errors.pass_confirm')) : ?>
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.pass_confirm') ?>
-                                            </div>
-                                        <?php endif ?>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    </form>
-                </div>
-
-            </div>
-
+<section class="section">
+    <div class="section-header">
+        <h1>Register User</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="#">Users</a></div>
+            <div class="breadcrumb-item">Register</div>
         </div>
     </div>
+
+    <div class="section-body">
+        <h2 class="section-title">Register User</h2>
+        <p class="section-lead">
+            Please fill out the form below to register a new user.
+        </p>
+
+        <div class="card">
+            <form action="<?= url_to('register') ?>" method="post">
+                <?= csrf_field() ?>
+                <input type="hidden" name="role-name" value="<?= $roleName ?>">
+                <div class="card-header">
+                    <h4>Form Registrasi User</h4>
+                </div>
+                <div class="card-body">
+                    <?= view('App\Views\Auth\_message_block') ?>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Username input -->
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" name="username" class="form-control <?= session('errors.username') ? 'is-invalid' : '' ?>" placeholder="Enter username" value="<?= old('username') ?>">
+                                <?php if (session('errors.username')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.username') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Email input -->
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control <?= session('errors.email') ? 'is-invalid' : '' ?>" placeholder="Enter email" value="<?= old('email') ?>">
+                                <?php if (session('errors.email')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.email') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Password input -->
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control <?= session('errors.password') ? 'is-invalid' : '' ?>" placeholder="Enter password">
+                                <?php if (session('errors.password')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.password') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Repeat Password input -->
+                            <div class="form-group">
+                                <label>Repeat Password</label>
+                                <input type="password" name="pass_confirm" class="form-control <?= session('errors.pass_confirm') ? 'is-invalid' : '' ?>" placeholder="Enter password again">
+                                <?php if (session('errors.pass_confirm')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.pass_confirm') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 </section>
 

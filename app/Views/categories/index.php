@@ -1,87 +1,84 @@
 <?= $this->extend('layouts/main.php') ?>
 
 <?= $this->section('style') ?>
-<link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/modules/datatables/datatables.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/modules/toastr/toastr.min.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>DataTables</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">DataTables</li>
-                </ol>
-            </div>
+<section class="section">
+    <div class="section-header">
+        <h1>Category Table</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="#">Components</a></div>
+            <div class="breadcrumb-item">Category</div>
         </div>
-    </div><!-- /.container-fluid -->
-</section>
+    </div>
 
-<section class="content">
-    <div class="container-fluid">
+    <div class="section-body">
+        <h2 class="section-title">Category List</h2>
+        <p class="section-lead">Manage your categories here.</p>
         <div class="row">
             <div class="col-12">
+                <!-- Message Block -->
+                <?= $this->include('auth/_message_block.php') ?>
 
-                <!-- Category Table -->
+                <!-- Card Component -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Category</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-
-                        <table id="example1" class="table table-bordered table-striped">
-
+                        <h4>Category Data</h4>
+                        <div class="card-header-form">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                                 Tambah Kategori
                             </button>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Category</th>
-                                    <th>Aksi(s)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($categories as $category) : ?>
-                                    <tr>
-                                        <td><?= $i++ ?></td>
-                                        <td><?= $category['name'] ?></td>
-                                        <td>
-                                            <form action="<?= base_url('category/delete/' . $category['id']) ?>" method="post" class="d-inline">
-                                                <?= csrf_field() ?>
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger btn-sm">delete</button>
-                                            </form>
-                                            <button type="button" class="btn btn-secondary btn-sm btn-edit"
-                                                data-toggle="modal"
-                                                data-id="<?= $category['id'] ?>"
-                                                data-name="<?= $category['name'] ?>">
-                                                Edit
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-
-                            </tbody>
-                        </table>
+                        </div>
                     </div>
-                    <!-- /.card-body -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <!-- Category Table -->
+                            <table class="table table-striped" id="table-1">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Category</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($categories as $category) : ?>
+                                        <tr>
+                                            <td><?= $i++ ?></td>
+                                            <td><?= $category["name"] ?></td>
+                                            <td>
+                                                <form action="<?= base_url('category/delete/' . $category['id']) ?>" method="post" class="d-inline">
+                                                    <?= csrf_field() ?>
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                </form>
+                                                <button type="button" class="btn btn-secondary btn-sm btn-edit"
+                                                    data-toggle="modal"
+                                                    data-id="<?= $category['id'] ?>"
+                                                    data-name="<?= $category['name'] ?>">
+                                                    Edit
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <!-- / .Category Table -->
-
+                <!-- End of Card -->
             </div>
         </div>
     </div>
 </section>
+
 
 
 <!--****  TAMBAH MODAL ***-->
@@ -141,19 +138,15 @@
 
 
 <?= $this->section('script') ?>
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script src="../../plugins/toastr/toastr.min.js"></script>
+<script src="<?= base_url() ?>assets/modules/datatables/datatables.min.js"></script>
+<script src="<?= base_url() ?>assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
+<script src="<?= base_url() ?>assets/modules/jquery-ui/jquery-ui.min.js"></script>
+
+<script src="<?= base_url() ?>assets/modules/toastr/toastr.min.js"></script>
 <script>
     $(function() {
-        $("#example1").DataTable({
+        $("#table-1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,

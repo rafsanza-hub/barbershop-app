@@ -48,6 +48,16 @@ class Service extends BaseController{
         ];
         return view('services/edit', $data);
     }
+    public function update($id){
+        $this->serviceModel->save([
+            'id' => $id,
+            'name' => $this->request->getPost('name'),
+            'description' => $this->request->getPost('description'),
+            'price' => $this->request->getPost('price'),
+            'category_id' => $this->request->getPost('category_id'),
+        ]);
+        return redirect()->to('service')->with('success', 'Service updated successfully');
+    }
 
     public function delete($id){
         $this->serviceModel->delete($id);

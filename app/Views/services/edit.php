@@ -3,88 +3,97 @@
 
 <!-- Content -->
 <?= $this->section('content') ?>
-
-<!-- general form elements disabled -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>DataTables</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">DataTables</li>
-                </ol>
-            </div>
+<section class="section">
+    <div class="section-header">
+        <h1>DataTables</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="#">Home</a></div>
+            <div class="breadcrumb-item"><a href="#">Service</a></div>
+            <div class="breadcrumb-item">General Elements</div>
         </div>
-    </div><!-- /.container-fluid -->
-</section>
+    </div>
 
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card ">
-                    <div class="card-header">
-                        <h3 class="card-title">General Elements</h3>
-                    </div>
+    <div class="section-body">
+        <h2 class="section-title">Service Edit Form</h2>
+        <p class="section-lead">
+            Modify service details by updating the information below.
+        </p>
 
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <form action="<?= base_url('service/save') ?>" method="post">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- text input -->
-                                    <div class="form-group">
-                                        <label>Nama Service</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter ..." value="<?= old('name', $service['name']) ?>">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <!-- text input -->
-                                    <div class="form-group">
-                                        <label>Harga</label>
-                                        <input type="number" name="price" class="form-control" placeholder="Enter ..." value="<?= old('price', $service['price']) ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Category</label>
-                                        <select name="category_id" class="form-control">
-                                            <?php foreach ($categories as $category) : ?>
-                                                <?php ($category['id'] == $service['category_id']) ? $option = 'selected'  : $option = '';  ?>
-
-                                                <option <?= $option ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <!-- textarea -->
-                                    <div class="form-group">
-                                        <label>Description</label>
-                                        <textarea name="description" class="form-control" rows="3" placeholder="Enter ..."><?= old('description', $service['description']) ?></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    </form>
+        <div class="card">
+            <form action="<?= base_url('service/update/'. $service["id"]) ?>" method="post">
+                <?= csrf_field() ?>
+                <div class="card-header">
+                    <h4>General Elements</h4>
                 </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Name input -->
+                            <div class="form-group">
+                                <label>Nama Service</label>
+                                <input type="text" name="name" class="form-control <?= session('errors.name') ? 'is-invalid' : ''; ?>" placeholder="Enter service name" value="<?= old('name', $service['name']) ?>">
+                                <?php if (session('errors.name')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.name') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Price input -->
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <input type="number" name="price" class="form-control <?= session('errors.price') ? 'is-invalid' : ''; ?>" placeholder="Enter price" value="<?= old('price', $service['price']) ?>">
+                                <?php if (session('errors.price')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.price') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Category selection -->
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select name="category_id" class="form-control <?= session('errors.category_id') ? 'is-invalid' : ''; ?>">
+                                    <?php foreach ($categories as $category) : ?>
+                                        <option value="<?= $category['id'] ?>" <?= ($category['id'] == $service['category_id']) ? 'selected' : ''; ?>>
+                                            <?= $category['name'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?php if (session('errors.category_id')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.category_id') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
 
-            </div>
-
+                        <div class="col-sm-6">
+                            <!-- Description textarea -->
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="description" class="form-control <?= session('errors.description') ? 'is-invalid' : ''; ?>" rows="3" placeholder="Enter description"><?= old('description', $service['description']) ?></textarea>
+                                <?php if (session('errors.description')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.description') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
-    </div>
 </section>
+
 
 
 <?= $this->endSection() ?>
