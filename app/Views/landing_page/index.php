@@ -22,7 +22,7 @@
             <h1>Hair Studio</h1>
             <p>Style Your Hair Is Style Your Life</p>
             <div class="banner-btn">
-                <a href="#"><span></span>Find Out</a>
+                <a href="<?= base_url('customer/booking') ?>"><span></span>Book</a>
                 <a href="#"><span></span>Read More</a>
             </div>
         </div>

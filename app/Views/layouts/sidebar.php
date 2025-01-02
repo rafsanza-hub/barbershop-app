@@ -65,13 +65,24 @@
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a href="<?= base_url('user/client') ?>" class="nav-link">
+                     <a href="<?= base_url('user/customer') ?>" class="nav-link">
                          <i class="nav-icon fas fa-user"></i>
                          <p>
-                             Client
+                             Customer
                          </p>
                      </a>
                  </li>
+
+                 <li class="nav-header">Booking</li>
+                 <li class="nav-item">
+                     <a href="<?= base_url('booking') ?>" class="nav-link">
+                         <i class="nav-icon fas fa-sign-out-alt"></i>
+                         <p>
+                             Booking
+                         </p>
+                     </a>
+                 </li>
+
 
                  <li class="nav-header">Logout</li>
                  <li class="nav-item">

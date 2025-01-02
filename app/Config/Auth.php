@@ -30,7 +30,7 @@ class Auth extends \Myth\Auth\Config\Auth
      *
      * @var string
      */
-    public $landingRoute = '/';
+    public $landingRoute = '/dashboard';
 
     /**
      * --------------------------------------------------------------------

@@ -17,7 +17,7 @@ class Booking extends BaseController{
     public function index(){
         $data =[
             'title' => 'Booking',
-            'bookings' => $this->bookingModel->getBooking(),
+            'bookings' => $this->bookingModel->getAllBooking(),
             'barbers' => $this->userModel->getUserByRole('barber'),
         ];
 

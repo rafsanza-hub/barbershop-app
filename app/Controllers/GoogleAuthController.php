@@ -14,11 +14,11 @@ class GoogleAuthController extends BaseController
 
     public function __construct()
     {
-        
+
         $this->clientId = getenv('GOOGLE_CLIENT_ID');
         $this->clientSecret = getenv('GOOGLE_CLIENT_SECRET');
         $this->client = new Client();
-        
+
         $this->client->setClientId($this->clientId);
         $this->client->setClientSecret($this->clientSecret);
         $this->client->setRedirectUri(base_url('auth/google/callback'));
@@ -59,10 +59,11 @@ class GoogleAuthController extends BaseController
                 return redirect()->to('/dashboard')->with('error', 'Login berhasil!');
             } else {
                 $userModel1 = new UserModel();
-                  // Jika pengguna belum terdaftar, registrasi pengguna baru
-                  $userData = [
+                // Jika pengguna belum terdaftar, registrasi pengguna baru
+                $userData = [
                     'email' => $googleUser->email,
-                    'username' => $googleUser->name,
+                    'fullname' => $googleUser->email,
+                    'username' => strtok($googleUser->name, ' ') . random_int(3, 5),
                     'google_id' => $googleUser->id, // Menyimpan google_id untuk autentikasi Google
                     'password_hash' => password_hash(bin2hex(random_bytes(10)), PASSWORD_DEFAULT),
                     'active' => 1,
@@ -82,6 +83,4 @@ class GoogleAuthController extends BaseController
             return redirect()->to('/login')->with('error', 'Autentikasi Google gagal');
         }
     }
-
-   
 }
