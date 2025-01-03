@@ -39,19 +39,19 @@
             <!-- User List -->
             <li class="menu-header">User List</li>
             <li>
-                <a class="nav-link" href="<?= base_url('user/admin') ?>">
+                <a class="nav-link" href="<?= base_url('admin') ?>">
                     <i class="fas fa-user-tie"></i>
                     <span>Admin</span>
                 </a>
             </li>
             <li>
-                <a class="nav-link" href="<?= base_url('user/barber') ?>">
+                <a class="nav-link" href="<?= base_url('barber') ?>">
                     <i class="fas fa-user-tag"></i>
                     <span>Barber</span>
                 </a>
             </li>
             <li>
-                <a class="nav-link" href="<?= base_url('user/customer') ?>">
+                <a class="nav-link" href="<?= base_url('customer') ?>">
                     <i class="fas fa-user"></i>
                     <span>Customer</span>
                 </a>

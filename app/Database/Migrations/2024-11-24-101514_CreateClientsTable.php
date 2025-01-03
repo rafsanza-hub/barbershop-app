@@ -21,7 +21,7 @@ class CreateClientsTable extends Migration
                 'constraint' => 11,
                 'unsigned'   => true,
             ],
-            'full_name' => [
+            'fullname' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],

@@ -21,14 +21,13 @@
         </p>
 
         <div class="card">
-            <form action="<?= url_to('register') ?>" method="post">
+            <form action="<?= base_url("barber/save") ?>" method="post">
                 <?= csrf_field() ?>
-                <input type="hidden" name="role-name" value="<?= $roleName ?>">
                 <div class="card-header">
                     <h4>Form Registrasi User</h4>
                 </div>
                 <div class="card-body">
-                    <?= view('App\Views\Auth\_message_block') ?>
+                    <?= view('App\Views\layouts\_message_block') ?>
 
                     <div class="row">
                         <div class="col-sm-6">
@@ -39,6 +38,18 @@
                                 <?php if (session('errors.username')) : ?>
                                     <div class="invalid-feedback">
                                         <?= session('errors.username') ?>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Username input -->
+                            <div class="form-group">
+                                <label>Fullname</label>
+                                <input type="text" name="fullname" class="form-control <?= session('errors.fullname') ? 'is-invalid' : '' ?>" placeholder="Enter fullname" value="<?= old('fullname') ?>">
+                                <?php if (session('errors.fullname')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= session('errors.fullname') ?>
                                     </div>
                                 <?php endif ?>
                             </div>
@@ -55,8 +66,8 @@
                                 <?php endif ?>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                  
+                 
                         <div class="col-sm-6">
                             <!-- Password input -->
                             <div class="form-group">
@@ -81,7 +92,7 @@
                                 <?php endif ?>
                             </div>
                         </div>
-                    </div>
+                        </div>
                 </div>
                 <div class="card-footer text-right">
                     <button type="submit" class="btn btn-primary">Submit</button>

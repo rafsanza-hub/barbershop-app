@@ -2,16 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\CustomerModel;
+use App\Models\AdminModel;
 use App\Models\UserModel;
 use Myth\Auth\Password;
 
-class Customer extends BaseController
+class Admin extends BaseController
 {
 
     protected $db;
     protected $userModel;
-    protected $customerModel;
+    protected $adminModel;
     protected $userModel1;
 
     public function __construct()
@@ -19,25 +19,26 @@ class Customer extends BaseController
 
         $this->db = \Config\Database::connect();
         $this->userModel = new UserModel();
-        $this->customerModel = new CustomerModel();
+        $this->adminModel = new AdminModel();
+        $this->userModel1 = new \App\Models\UserModel();
     }
 
     public function index()
    {
         $data = [
-            'title' => 'Data Barber' ,
-            'customers' => $this->customerModel->getCustomer(),
+            'title' => 'Data Admin' ,
+            'admins' => $this->adminModel->GetAdmin(),
         ];
-        return view('customers/index', $data);
+        return view('admins/index', $data);
     }
 
     public function create()
     {
         session()->set('previous_url', previous_url());
         $data = [
-            'title' => 'Tambah '. "Barber",
+            'title' => 'Tambah '. "Admin",
         ];
-        return view('customers/create', $data);
+        return view('admins/create', $data);
     }
 
     public function save(){
@@ -92,14 +93,14 @@ class Customer extends BaseController
         }
 
         $this->db->transStart();
-        $this->userModel->withGroup('customer')->save([
+        $this->userModel->withGroup('admin')->save([
             'username' => $this->request->getVar('username'),
             'password_hash' => Password::hash($this->request->getVar('password')),
             'email' => $this->request->getVar('email'),
             'active' => 1,
         ]);
 
-        $this->customerModel->save([
+        $this->adminModel->save([
             'user_id' => $this->userModel->getInsertID(),
             'fullname' => $this->request->getPost('fullname'),
         ]);
@@ -108,16 +109,16 @@ class Customer extends BaseController
         if ($this->db->transStatus() === false) {
             return redirect()->back()->withInput()->with('errors', 'Data gagal disimpan.');
         }
-        return redirect()->to('customer')->with('success', 'Data berhasil disimpan.');
+        return redirect()->to('admin')->with('success', 'Data berhasil disimpan.');
     }
 
     public function edit($id)
     {
         $data = [
-            'title' => 'Edit Barber',
-            'customer' => $this->customerModel->getCustomer($id),
+            'title' => 'Edit Admin',
+            'admin' => $this->adminModel->getAdmin($id),
         ];
-        return view('customers/edit', $data);
+        return view('admins/edit', $data);
     }
 
     public function update($id){
@@ -148,7 +149,7 @@ class Customer extends BaseController
             'email' => $this->request->getPost('email'),
         ]);
 
-        $this->customerModel->save([
+        $this->adminModel->save([
             'id' => $id,
             'fullname' => $this->request->getPost('fullname'),
         ]);
@@ -158,13 +159,13 @@ class Customer extends BaseController
         if ($this->db->transStatus() === false) {
             return redirect()->back()->withInput()->with('errors', 'Data gagal disimpan.');
         }
-        return redirect()->to('customer')->with('success', 'Data berhasil disimpan.');
+        return redirect()->to('admin')->with('success', 'Data berhasil disimpan.');
     }
     
     public function delete($userId)
     {
         // CASCADE
         $this->userModel->delete($userId, true);
-        return redirect()->to('customer')->with('success', 'Data berhasil dihapus.');
+        return redirect()->to('admin')->with('success', 'Data berhasil dihapus.');
     }
 }

@@ -31,6 +31,44 @@ class Service extends BaseController{
     }
 
     public function save(){
+        $validation = \Config\Services::validation();
+
+        // Menentukan aturan validasi
+        $validation->setRules([
+            'name' => [
+                'label' => 'name',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Name must be filled',
+                ],
+            ],
+            'description' => [
+                'label' => 'description',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Description must be filled',
+                ],
+            ],
+            'price' => [
+                'label' => 'price',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Price must be filled',
+                ],
+            ],
+            'category_id' => [
+                'label' => 'category_id',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Category must be filled',
+                ],
+            ],
+        ]);
+
+        if(!$validation->run($this->request->getPost())){
+            return redirect()->to('service/create')->withInput()->with('errors', $validation->getErrors());
+        }
+
         $this->serviceModel->save([
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
@@ -49,6 +87,44 @@ class Service extends BaseController{
         return view('services/edit', $data);
     }
     public function update($id){
+        $validation = \Config\Services::validation();
+
+        // Menentukan aturan validasi
+        $validation->setRules([
+            'name' => [
+                'label' => 'name',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Name must be filled',
+                ],
+            ],
+            'description' => [
+                'label' => 'description',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Description must be filled',
+                ],
+            ],
+            'price' => [
+                'label' => 'price',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Price must be filled',
+                ],
+            ],
+            'category_id' => [
+                'label' => 'category_id',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Category must be filled',
+                ],
+            ],
+        ]);
+
+        if(!$validation->run($this->request->getPost())){
+            return redirect()->to('service/edit/' . $id)->withInput()->with('errors', $validation->getErrors());
+        }
+
         $this->serviceModel->save([
             'id' => $id,
             'name' => $this->request->getPost('name'),

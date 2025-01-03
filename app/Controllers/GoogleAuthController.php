@@ -59,16 +59,21 @@ class GoogleAuthController extends BaseController
                 return redirect()->to('/dashboard')->with('error', 'Login berhasil!');
             } else {
                 $userModel1 = new UserModel();
+                $customerModel = new \App\Models\CustomerModel();
                 // Jika pengguna belum terdaftar, registrasi pengguna baru
                 $userData = [
                     'email' => $googleUser->email,
-                    'fullname' => $googleUser->email,
                     'username' => strtok($googleUser->name, ' ') . random_int(3, 5),
                     'google_id' => $googleUser->id, // Menyimpan google_id untuk autentikasi Google
                     'password_hash' => password_hash(bin2hex(random_bytes(10)), PASSWORD_DEFAULT),
                     'active' => 1,
                 ];
-                $userModel1->save($userData);
+
+                $userModel1->withGroup('customer')->save($userData);
+                $customerModel->save([
+                    'user_id' => $userModel1->getInsertID(),
+                    'fullname' => $googleUser->name,
+                ]);
 
                 // Setelah registrasi, login pengguna dan arahkan ke dashboard
                 $user = $userModel->where('google_id', $googleUser->id)->first();

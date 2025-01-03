@@ -15,12 +15,6 @@ class AddGoogleIdToUsers extends Migration
                 'null'       => true,
                 'after' => 'id',
             ],
-            'fullname' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
-                'null' => true,
-                'after' => 'username',
-            ],
         ]);
     }
 
