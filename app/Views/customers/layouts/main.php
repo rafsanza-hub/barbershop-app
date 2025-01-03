@@ -1,24 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Lockscreen</title>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title><?= $title ?? ""?></title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?= base_url() ?>plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?= base_url() ?>adminlte/css/adminlte.min.css">
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/modules/fontawesome/css/all.min.css">
+
+  <!-- CSS Libraries -->
+  <?= $this->renderSection("style") ?>
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/components.css">
+  <!-- Start GA -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
 </head>
-<body class="hold-transition lockscreen">
 
-<?= $this->renderSection('content') ?>
+<body class="layout-3">
+  <div id="app">
+    <div class="main-wrapper container">
 
-<!-- jQuery -->
-<script src="<?= base_url() ?>plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?= base_url() ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <?= $this->include("customers/layouts/navbar") ?>
+     
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <?= $this->renderSection("content") ?>
+
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="<?= base_url() ?>assets/modules/jquery.min.js"></script>
+  <script src="<?= base_url() ?>assets/modules/popper.js"></script>
+  <script src="<?= base_url() ?>assets/modules/tooltip.js"></script>
+  <script src="<?= base_url() ?>assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="<?= base_url() ?>assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="<?= base_url() ?>assets/modules/moment.min.js"></script>
+  <script src="<?= base_url() ?>assets/js/stisla.js"></script>
+  <?= $this->renderSection("script") ?>
+  <!-- JS Libraies -->
+
+  <!-- Page Specific JS File -->
+
+  <!-- Template JS File -->
+  <script src="<?= base_url() ?>assets/js/scripts.js"></script>
+  <script src="<?= base_url() ?>assets/js/custom.js"></script>
 </body>
+
 </html>

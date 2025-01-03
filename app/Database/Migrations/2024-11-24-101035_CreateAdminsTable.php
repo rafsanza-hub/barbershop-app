@@ -5,7 +5,7 @@ namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
 
-class CreateEmployeesTable extends Migration
+class CreateAdminsTable extends Migration
 {
     public function up()
     {
@@ -25,11 +25,6 @@ class CreateEmployeesTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'phone_number' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '20',
-                'null'       => true,
-            ],
             'created_at' => [
                 'type' => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
@@ -43,11 +38,11 @@ class CreateEmployeesTable extends Migration
 
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('employees');
+        $this->forge->createTable('admins');
     }
 
     public function down()
     {
-        $this->forge->dropTable('employees');
+        $this->forge->dropTable('admins');
     }
 }

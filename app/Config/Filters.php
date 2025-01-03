@@ -38,8 +38,8 @@ class Filters extends BaseFilters
         'role'       => \Myth\Auth\Filters\RoleFilter::class,
         'permission' => \Myth\Auth\Filters\PermissionFilter::class,
         // Google
-    
-        
+
+
     ];
 
     /**
@@ -78,7 +78,7 @@ class Filters extends BaseFilters
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
-            'login'  => ['except' => ['login', 'auth/google/*', 'auth/google/callback']],
+            'login'  => ['except' => ['/', 'login', 'auth/google/*', 'auth/google/callback']],
         ],
         'after' => [
             // 'honeypot',

@@ -2,65 +2,113 @@
 
 <!-- Content -->
 <?= $this->section('content') ?>
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>DataTables</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">DataTables</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
-</section>
+<section class="section">
 
 
-<section class="content">
-    <div class="card card-solid">
-        <div class="card-body pb-0">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                    <div class="card bg-light d-flex flex-fill">
-                        <div class="card-header text-muted border-bottom-0">
-                            Digital Strategist
-                        </div>
-                        <div class="card-body pt-0">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h2 class="lead"><b>Nicole Pearson</b></h2>
-                                    <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover
-                                    </p>
-                                    <ul class="ml-4 mb-0 fa-ul text-muted">
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address:
-                                            Demo Street 123, Demo City 04312, NJ</li>
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800
-                                            - 12 12 23 52</li>
-                                    </ul>
-                                </div>
-                                <div class="col-5 text-center">
-                                    <img src="<?= base_url() ?>adminlte/img/user1-128x128.jpg" alt="user-avatar" class="img-circle img-fluid">
-                                </div>
+          <div class="section-body">
+            <div class="card">
+             
+              <div class="card-body">
+              <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Create New App</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="row mt-4">
+                      <div class="col-12 col-lg-8 offset-lg-2">
+                        <div class="wizard-steps">
+                          <div class="wizard-step wizard-step-active">
+                            <div class="wizard-step-icon">
+                              <i class="far fa-user"></i>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="text-right">
-                                <a href="#" class="btn btn-sm bg-teal">
-                                    <i class="fas fa-comments"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-user"></i> View Profile
-                                </a>
+                            <div class="wizard-step-label">
+                              User Account
                             </div>
+                          </div>
+                          <div class="wizard-step">
+                            <div class="wizard-step-icon">
+                              <i class="fas fa-box-open"></i>
+                            </div>
+                            <div class="wizard-step-label">
+                              Create an App
+                            </div>
+                          </div>
+                          <div class="wizard-step">
+                            <div class="wizard-step-icon">
+                              <i class="fas fa-server"></i>
+                            </div>
+                            <div class="wizard-step-label">
+                              Server Information
+                            </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
+
+                    <form class="wizard-content mt-2">
+                      <div class="wizard-pane">
+                        <div class="form-group row align-items-center">
+                          <label class="col-md-4 text-md-right text-left">Name</label>
+                          <div class="col-lg-4 col-md-6">
+                            <input type="text" name="name" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group row align-items-center">
+                          <label class="col-md-4 text-md-right text-left">Email</label>
+                          <div class="col-lg-4 col-md-6">
+                            <input type="email" name="email" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-4 text-md-right text-left mt-2">Address</label>
+                          <div class="col-lg-4 col-md-6">
+                            <textarea class="form-control" name="address"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-4 text-md-right text-left mt-2">Role</label>
+                          <div class="col-lg-4 col-md-6">
+                            <div class="selectgroup w-100">
+                              <label class="selectgroup-item">
+                                <input type="radio" name="value" value="developer" class="selectgroup-input">
+                                <span class="selectgroup-button">Developer</span>
+                              </label>
+                              <label class="selectgroup-item">
+                                <input type="radio" name="value" value="ceo" class="selectgroup-input">
+                                <span class="selectgroup-button">CEO</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md-4"></div>
+                          <div class="col-lg-4 col-md-6">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" name="agree" class="custom-control-input" id="agree">
+                              <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md-4"></div>
+                          <div class="col-lg-4 col-md-6 text-right">
+                            <a href="#" class="btn btn-icon icon-right btn-primary">Next <i class="fas fa-arrow-right"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-</section>
+              </div>
+              <div class="card-footer bg-whitesmoke">
+                This is card footer
+              </div>
+            </div>
+          </div>
+        </section>
 
 <?= $this->endSection() ?>
