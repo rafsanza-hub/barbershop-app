@@ -46,7 +46,9 @@ $routes->post('customer/update/(:num)', 'Customer::update/$1');
 $routes->delete('customer/delete/(:num)', 'Customer::delete/$1');
 
 $routes->get('booking', 'Booking::index');
-$routes->get('customer/booking', 'Customer::booking');
+$routes->get('customer/booking', 'Home::booking');
+$routes->post('customer/booking/save', 'Home::save');
+
 
 $routes->get('auth/google/login', 'GoogleAuthController::login');
 $routes->get('auth/google/register', 'GoogleAuthController::login');

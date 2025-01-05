@@ -36,7 +36,7 @@
   <div id="app">
     <div class="main-wrapper container">
 
-      <?= $this->include("customers/layouts/navbar") ?>
+      <?= $this->include("customer/layouts/navbar") ?>
      
 
       <!-- Main Content -->
@@ -44,9 +44,6 @@
         <?= $this->renderSection("content") ?>
 
       </div>
-
-
-
 
 
     </div>

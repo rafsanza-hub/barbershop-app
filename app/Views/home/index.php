@@ -6,11 +6,9 @@
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-                <a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center">
-                    <span class="icon-play"></a>
-                </a>
+               
                 <div class="col-md-6 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                    <p class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Created by <a href="#">Colorlib.com</a></p>
+                    <!-- <p class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">BarberKing</p> -->
                     <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We will make you stylish</h1>
                     <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="<?= base_url('customer/booking') ?>" class="btn btn-primary px-4 py-3">Book an Appointment</a></p>
                 </div>
@@ -57,23 +55,25 @@
         </div>
     </section>
 
-    <section class="ftco-section">
+    <section class="ftco-section" id="about">
         <div class="container">
             <div class="row justify-content-center mb-4">
                 <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">Welcome to <span>Trim</span> A Hair Salon</h2>
+                    <h2 class="mb-4">Welcome to <span>BarberKing</span></h2>
                     <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center ftco-animate">
-                    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+                    <p>Selamat datang di BarberKing, destinasi utama untuk perawatan dan gaya rambut pria. Kami berdedikasi untuk memberikan pengalaman cukur yang luar biasa dengan sentuhan profesional dan suasana yang nyaman. Di BarberKing, kami percaya bahwa setiap pelanggan berhak mendapatkan layanan terbaik yang disesuaikan dengan kebutuhan pribadi mereka.
+
+Dengan tim barber berpengalaman, kami menghadirkan berbagai layanan mulai dari potongan rambut klasik hingga gaya modern yang trendi. Kami menggunakan peralatan berkualitas tinggi dan produk terbaik untuk memastikan kepuasan maksimal bagi setiap pelanggan.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="ftco-section ftco-bg-dark">
+    <section class="ftco-section ftco-bg-dark"  id="services">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section ftco-animate text-center">
@@ -83,18 +83,22 @@
                 </div>
             </div>
             <div class="row">
+                <?php foreach($categories as $category) : ?>
                 <div class="col-md-3 ftco-animate">
                     <div class="media d-block text-center block-6 services">
                         <div class="icon d-flex justify-content-center align-items-center mb-4">
                             <span class="flaticon-scissor-and-comb"></span>
                         </div>
                         <div class="media-body">
-                            <h3 class="heading">Haircuts &amp; Styling</h3>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                            <h3 class="heading"><?= $category["name"] ?></h3>
+                            <p><?= $category["description"] ?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 ftco-animate">
+                <?php endforeach ?>
+
+
+                <!-- <div class="col-md-3 ftco-animate">
                     <div class="media d-block text-center block-6 services">
                         <div class="icon d-flex justify-content-center align-items-center mb-4">
                             <span class="flaticon-male-head-hair-and-beard"></span>
@@ -122,7 +126,7 @@
                             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -137,83 +141,23 @@
                 </div>
             </div>
             <div class="row">
+            <?php foreach ($services as $service) : ?>
                 <div class="col-md-6">
+                    
                     <div class="pricing-entry ftco-animate">
                         <div class="d-flex text align-items-center">
-                            <h3><span>Men's Haircut</span></h3>
-                            <span class="price">$20.00</span>
+                            <h3><span><?= $service["name"] ?></span></h3>
+                            <span class="price">Rp. <?= $service["price"] ?></span>
                         </div>
                         <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
+                            <p><?= $service["description"] ?></p>
                         </div>
                     </div>
-                    <div class="pricing-entry ftco-animate">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>Children Haircut</span></h3>
-                            <span class="price">$29.00</span>
-                        </div>
-                        <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
-                        </div>
-                    </div>
-                    <div class="pricing-entry ftco-animate">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>Beard Cut</span></h3>
-                            <span class="price">$20.00</span>
-                        </div>
-                        <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
-                        </div>
-                    </div>
-                    <div class="pricing-entry ftco-animate">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>Men's Haircut</span></h3>
-                            <span class="price">$20.00</span>
-                        </div>
-                        <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
-                        </div>
-                    </div>
+                 
+                   
                 </div>
+                <?php endforeach; ?>
 
-                <div class="col-md-6">
-                    <div class="pricing-entry ftco-animate">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>Women's Haircut</span></h3>
-                            <span class="price">$49.91</span>
-                        </div>
-                        <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
-                        </div>
-                    </div>
-                    <div class="pricing-entry ftco-animate">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>Men's Haircut</span></h3>
-                            <span class="price">$20.00</span>
-                        </div>
-                        <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
-                        </div>
-                    </div>
-                    <div class="pricing-entry ftco-animate">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>Men's Haircut</span></h3>
-                            <span class="price">$20.00</span>
-                        </div>
-                        <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
-                        </div>
-                    </div>
-                    <div class="pricing-entry ftco-animate">
-                        <div class="d-flex text align-items-center">
-                            <h3><span>Men's Haircut</span></h3>
-                            <span class="price">$20.00</span>
-                        </div>
-                        <div class="d-block">
-                            <p>A small river named Duden flows by their place and supplies</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -226,7 +170,7 @@
                     <h3>Save up to 25% Off</h3>
                     <h2 class="mb-4">All Services Discount</h2>
                     <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                    <p><a href="#" class="btn btn-primary px-4 py-3">Appointment</a></p>
+                    <p><a href="<?= base_url('customer/booking') ?>" class="btn btn-primary px-4 py-3">Appointment</a></p>
                 </div>
             </div>
         </div>
@@ -242,11 +186,12 @@
                 </div>
             </div>
             <div class="row">
+                <?php foreach($barbers as $barber) : ?>
                 <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
                     <div class="staff">
                         <div class="img mb-4" style="background-image: url(<?= base_url() ?>assets/home/images/person_1.jpg);"></div>
                         <div class="info text-center">
-                            <h3><a href="teacher-single.html">Tom Smith</a></h3>
+                            <h3><a href="teacher-single.html"><?= $barber["fullname"] ?></a></h3>
                             <span class="position">Hair Specialist</span>
                             <div class="text">
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -254,144 +199,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-                    <div class="staff">
-                        <div class="img mb-4" style="background-image: url(<?= base_url() ?>assets/home/images/person_2.jpg);"></div>
-                        <div class="info text-center">
-                            <h3><a href="teacher-single.html">Mark Wilson</a></h3>
-                            <span class="position">Beard Specialist</span>
-                            <div class="text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-                    <div class="staff">
-                        <div class="img mb-4" style="background-image: url(<?= base_url() ?>assets/home/images/person_3.jpg);"></div>
-                        <div class="info text-center">
-                            <h3><a href="teacher-single.html">Patrick Jacobson</a></h3>
-                            <span class="position">Hair Stylist</span>
-                            <div class="text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-                    <div class="staff">
-                        <div class="img mb-4" style="background-image: url(<?= base_url() ?>assets/home/images/person_4.jpg);"></div>
-                        <div class="info text-center">
-                            <h3><a href="teacher-single.html">Ivan Dorchsner</a></h3>
-                            <span class="position">Beard Specialist</span>
-                            <div class="text">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section ftco-bg-dark">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">Our Shop</h2>
-                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-                    <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 ftco-animate">
-                    <div class="product-entry text-center">
-                        <a href="#"><img src="<?= base_url() ?>assets/home/images/prod-1.png" class="img-fluid" alt="Colorlib Template"></a>
-                        <div class="text">
-                            <p class="rate"><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star_half"></span></p>
-                            <h3><a href="#">Shaves 01</a></h3>
-                            <span class="price mb-4">$150</span>
-                            <p><a href="#" class="btn btn-primary">Add to cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="product-entry text-center">
-                        <a href="#"><img src="<?= base_url() ?>assets/home/images/prod-2.png" class="img-fluid" alt="Colorlib Template"></a>
-                        <div class="text">
-                            <p class="rate"><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star_half"></span></p>
-                            <h3><a href="#">Shaves 01</a></h3>
-                            <span class="price mb-4">$150</span>
-                            <p><a href="#" class="btn btn-primary">Add to cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="product-entry text-center">
-                        <a href="#"><img src="<?= base_url() ?>assets/home/images/prod-3.png" class="img-fluid" alt="Colorlib Template"></a>
-                        <div class="text">
-                            <p class="rate"><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star_half"></span></p>
-                            <h3><a href="#">Shaves 01</a></h3>
-                            <span class="price mb-4">$150</span>
-                            <p><a href="#" class="btn btn-primary">Add to cart</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <div class="product-entry text-center">
-                        <a href="#"><img src="<?= base_url() ?>assets/home/images/prod-4.png" class="img-fluid" alt="Colorlib Template"></a>
-                        <div class="text">
-                            <p class="rate"><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star2"></span><span class="icon-star_half"></span></p>
-                            <h3><a href="#">Shaves 01</a></h3>
-                            <span class="price mb-4">$150</span>
-                            <p><a href="#" class="btn btn-primary">Add to cart</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-gallery">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">Our Gallery</h2>
-                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-                    <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-            </div>
-        </div>
-        <div class="container-wrap">
-            <div class="row no-gutters">
-                <div class="col-md-3 ftco-animate">
-                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-1.jpg);">
-                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                            <span class="icon-search"></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-2.jpg);">
-                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                            <span class="icon-search"></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-3.jpg);">
-                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                            <span class="icon-search"></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 ftco-animate">
-                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-4.jpg);">
-                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                            <span class="icon-search"></span>
-                        </div>
-                    </a>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </section>
@@ -445,7 +253,56 @@
         </div>
     </section>
 
-    <section class="ftco-section">
+    
+
+    <section class="ftco-gallery" id="gallery">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section ftco-animate text-center">
+                    <h2 class="mb-4">Our Gallery</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+                    <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-wrap">
+            <div class="row no-gutters">
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-1.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-2.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-3.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(<?= base_url() ?>assets/home/images/gallery-4.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   
+
+    <section class="ftco-section" id="#blog">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section ftco-animate text-center">
